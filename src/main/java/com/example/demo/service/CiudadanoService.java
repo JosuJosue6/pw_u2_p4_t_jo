@@ -8,7 +8,7 @@ public interface CiudadanoService {
 
 	public void actualizar(Ciudadano ciudadano);
 
-	public void borrar(String cedula);
+	public void borrar(Integer id);
 
-	public Ciudadano buscarPorCedula(String cedula);
+	public Ciudadano buscarPorId(Integer id);
 }

@@ -25,15 +25,15 @@ public class CiudadanoServiceImpl implements CiudadanoService{
 	}
 
 	@Override
-	public void borrar(String cedula) {
+	public void borrar(Integer id) {
 		// TODO Auto-generated method stub
-		this.ciudadanoRepository.eliminar(cedula);
+		this.ciudadanoRepository.eliminar(id);
 	}
 
 	@Override
-	public Ciudadano buscarPorCedula(String cedula) {
+	public Ciudadano buscarPorId(Integer id) {
 		// TODO Auto-generated method stub
-		return this.ciudadanoRepository.seleccionarPorCedula(cedula);
+		return this.ciudadanoRepository.seleccionarPorId(id);
 	}
 
 }

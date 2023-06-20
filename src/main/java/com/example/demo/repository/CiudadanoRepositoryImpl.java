@@ -28,16 +28,16 @@ public class CiudadanoRepositoryImpl implements CiudadanoRepository{
 	}
 
 	@Override
-	public void eliminar(String cedula) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		Ciudadano ciudadano = this.seleccionarPorCedula(cedula);
+		Ciudadano ciudadano = this.seleccionarPorId(id);
 		this.entityManager.remove(ciudadano);
 	}
 
 	@Override
-	public Ciudadano seleccionarPorCedula(String cedula) {
+	public Ciudadano seleccionarPorId(Integer id) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Ciudadano.class, cedula);
+		return this.entityManager.find(Ciudadano.class, id);
 	}
 	
 }

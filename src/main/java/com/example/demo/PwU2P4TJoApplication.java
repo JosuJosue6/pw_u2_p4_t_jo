@@ -35,51 +35,53 @@ public class PwU2P4TJoApplication implements CommandLineRunner{
 		ciudadano.setNombre("Josue");
 		ciudadano.setCedula("1720525516");
 		
-		this.ciudadanoService.agregar(ciudadano);
-		
 		Ciudadano ciudadano1 = new Ciudadano();
-		ciudadano1.setApellido("Ocapana.");
-		ciudadano1.setNombre("Anderson");
-		ciudadano1.setCedula("1720525517");
+		ciudadano1.setApellido("Borrar.");
+		ciudadano1.setNombre("Borrar");
+		ciudadano1.setCedula("Borrar");
 		
-		this.ciudadanoService.agregar(ciudadano1);
-		
-		//actualizar
-		ciudadano.setNombre("Anderson Josue");
-		this.ciudadanoService.actualizar(ciudadano1);
-		
-		//borrar
-		//this.ciudadanoService.borrar(ciudadano.getCedula());
-		
-		//buscar
-		this.ciudadanoService.buscarPorCedula(ciudadano1.getCedula());
-		
-		// EMPLEADO*******************************************************
-		//insertar
 		Empleado empleado = new Empleado();
 		empleado.setCargo("Admin");
 		empleado.setSueldo(new BigDecimal(1000));
 		empleado.setCiudadano(ciudadano);
 		
-		this.empleadoService.agregar(empleado);
 		
 		Empleado empleado1 = new Empleado();
 		empleado1.setCargo("RH");
 		empleado1.setSueldo(new BigDecimal(500));
 		empleado1.setCiudadano(ciudadano1);
 		
+		
+		//Insertar
+		this.ciudadanoService.agregar(ciudadano);
+		this.ciudadanoService.agregar(ciudadano1);
+		this.empleadoService.agregar(empleado);
 		this.empleadoService.agregar(empleado1);
 		
-		//borrar
-		//this.empleadoService.borrar(empleado.getCiudadano().getCedula());
+		//Buscar
+		System.out.println("\nBuscar ANTES de la Actualizacion");
+		System.out.println(this.ciudadanoService.buscarPorId(1));
+		System.out.println(this.ciudadanoService.buscarPorId(2));
+		System.out.println(this.empleadoService.buscarPorId(1));
+		System.out.println(this.empleadoService.buscarPorId(2));
+		
 		
 		//actualizar
-		empleado.setCiudadano(ciudadano1);
+		ciudadano.setNombre("Anderson Josue");
+		this.ciudadanoService.actualizar(ciudadano);
+		empleado.setCargo("Gerente");
 		this.empleadoService.actualizar(empleado);
 		
-		//buscar
-		this.empleadoService.buscarPorId(empleado.getCiudadano().getCedula());
+		System.out.println("\nBuscar DESPUES de la Actualizacion");
+		System.out.println(this.ciudadanoService.buscarPorId(1));
+		System.out.println(this.empleadoService.buscarPorId(1));
+
 		
+		//borrar
+		this.ciudadanoService.borrar(ciudadano1.getId());
+		
+		
+
 	}
 
 }

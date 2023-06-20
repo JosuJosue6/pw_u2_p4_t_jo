@@ -2,6 +2,7 @@ package com.example.demo.repository.modelo;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,21 +35,41 @@ public class Empleado {
 	private Ciudadano ciudadano;
 	
 	//SET Y GET
+	
+	
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", sueldo=" + sueldo + ", cargo=" + cargo+ "]";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public BigDecimal getSueldo() {
 		return sueldo;
 	}
+
 	public void setSueldo(BigDecimal sueldo) {
 		this.sueldo = sueldo;
 	}
+
 	public String getCargo() {
 		return cargo;
 	}
+
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+
 	public Ciudadano getCiudadano() {
 		return ciudadano;
 	}
+
 	public void setCiudadano(Ciudadano ciudadano) {
 		this.ciudadano = ciudadano;
 	}

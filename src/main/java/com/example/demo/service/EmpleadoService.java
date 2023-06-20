@@ -8,7 +8,7 @@ public interface EmpleadoService {
 
 	public void actualizar(Empleado empleado);
 
-	public void borrar(String id);
+	public void borrar(Integer id);
 
-	public Empleado buscarPorId(String id);
+	public Empleado buscarPorId(Integer id);
 }

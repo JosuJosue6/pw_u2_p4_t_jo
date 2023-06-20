@@ -28,14 +28,14 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository{
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		Empleado empleado = this.seleccionarPorId(id);
 		this.entityManager.remove(empleado);
 	}
 
 	@Override
-	public Empleado seleccionarPorId(String id) {
+	public Empleado seleccionarPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Empleado.class, id);
 	}

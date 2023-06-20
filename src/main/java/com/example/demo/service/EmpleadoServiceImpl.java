@@ -25,13 +25,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
-	public void borrar(String id) {
+	public void borrar(Integer id) {
 		// TODO Auto-generated method stub
 		this.empleadoRepository.eliminar(id);
 	}
 
 	@Override
-	public Empleado buscarPorId(String id) {
+	public Empleado buscarPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return this.empleadoRepository.seleccionarPorId(id);
 	}

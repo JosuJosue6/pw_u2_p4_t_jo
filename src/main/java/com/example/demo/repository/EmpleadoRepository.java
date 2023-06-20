@@ -8,8 +8,8 @@ public interface EmpleadoRepository {
 
 	public void actualizar(Empleado empleado);
 
-	public void eliminar(String id);
+	public void eliminar(Integer id);
 
-	public Empleado seleccionarPorId(String id);
+	public Empleado seleccionarPorId(Integer id);
 
 }

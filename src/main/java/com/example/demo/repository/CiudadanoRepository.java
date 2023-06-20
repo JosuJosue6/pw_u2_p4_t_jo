@@ -8,8 +8,8 @@ public interface CiudadanoRepository {
 
 	public void actualizar(Ciudadano ciudadano);
 
-	public void eliminar(String cedula);
+	public void eliminar(Integer cedula);
 
-	public Ciudadano seleccionarPorCedula(String cedula);
+	public Ciudadano seleccionarPorId(Integer cedula);
 
 }
