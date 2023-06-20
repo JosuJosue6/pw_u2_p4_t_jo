@@ -7,19 +7,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Ciudadano;
-import com.example.demo.repository.modelo.Empleado;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.service.CiudadanoService;
 import com.example.demo.service.EmpleadoService;
+import com.example.demo.service.HabitacionService;
+import com.example.demo.service.HotelService;
 
 @SpringBootApplication
 public class PwU2P4TJoApplication implements CommandLineRunner{
 
 	@Autowired
-	private CiudadanoService ciudadanoService;
+	private HotelService hotelService;
 	
 	@Autowired
-	private EmpleadoService empleadoService;
+	private HabitacionService habitacionService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PwU2P4TJoApplication.class, args);
@@ -29,57 +31,70 @@ public class PwU2P4TJoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//agregar
-		Ciudadano ciudadano = new Ciudadano();
-		ciudadano.setApellido("Ocapana");
-		ciudadano.setNombre("Josue");
-		ciudadano.setCedula("1720525516");
+System.out.println("taller 17 one to many");
 		
-		Ciudadano ciudadano1 = new Ciudadano();
-		ciudadano1.setApellido("Borrar.");
-		ciudadano1.setNombre("Borrar");
-		ciudadano1.setCedula("Borrar");
+		Hotel hotel = new Hotel();
 		
-		Empleado empleado = new Empleado();
-		empleado.setCargo("Admin");
-		empleado.setSueldo(new BigDecimal(1000));
-		empleado.setCiudadano(ciudadano);
+		hotel.setNombre("Hotel 3");
+		hotel.setDireccion("America");
 		
+		Hotel hotelB = new Hotel();
 		
-		Empleado empleado1 = new Empleado();
-		empleado1.setCargo("RH");
-		empleado1.setSueldo(new BigDecimal(500));
-		empleado1.setCiudadano(ciudadano1);
+		hotelB.setNombre("Hotel 4");
+		hotelB.setDireccion("Borrar");
+		
+		System.out.println("\nAgregar Hotel a la DB");
+		this.hotelService.agregar(hotel);
+		this.hotelService.agregar(hotelB);
 		
 		
-		//Insertar
-		this.ciudadanoService.agregar(ciudadano);
-		this.ciudadanoService.agregar(ciudadano1);
-		this.empleadoService.agregar(empleado);
-		this.empleadoService.agregar(empleado1);
+		System.out.println("\nBuscar el hotel ANTES DE LA ACTUALIZACION");
+		System.out.println(this.hotelService.buscarPorID(1));
+		System.out.println(this.hotelService.buscarPorID(2));
 		
-		//Buscar
-		System.out.println("\nBuscar ANTES de la Actualizacion");
-		System.out.println(this.ciudadanoService.buscarPorId(1));
-		System.out.println(this.ciudadanoService.buscarPorId(2));
-		System.out.println(this.empleadoService.buscarPorId(1));
-		System.out.println(this.empleadoService.buscarPorId(2));
+		System.out.println("\nActualizar el hotel");
+		hotel.setDireccion("Nueva direccion hotel 3.");
+		this.hotelService.actualizar(hotel);
 		
+		System.out.println("\nBuscar el hotel DESPUES DE LA ACTUALIZACION");
+		System.out.println(this.hotelService.buscarPorID(1));
 		
-		//actualizar
-		ciudadano.setNombre("Anderson Josue");
-		this.ciudadanoService.actualizar(ciudadano);
-		empleado.setCargo("Gerente");
-		this.empleadoService.actualizar(empleado);
+		System.out.println("\nEliminar hotel");
+		this.hotelService.borrarHotel(2);
 		
-		System.out.println("\nBuscar DESPUES de la Actualizacion");
-		System.out.println(this.ciudadanoService.buscarPorId(1));
-		System.out.println(this.empleadoService.buscarPorId(1));
-
+		//**************************************************************
 		
-		//borrar
-		this.ciudadanoService.borrar(ciudadano1.getId());
+		System.out.println("HABITACIONES A HOTEL ");
 		
+		Habitacion habitacion = new Habitacion();
+		
+		habitacion.setNumero("1A");
+		habitacion.setValor(new BigDecimal(100));
+		habitacion.setHotel(hotel);
+		
+		Habitacion habitacion2 = new Habitacion();
+		
+		habitacion2.setNumero("1B");
+		habitacion2.setValor(new BigDecimal(100));
+		habitacion2.setHotel(hotel);
+		
+		System.out.println("\nAgregar habitaciones");
+		this.habitacionService.agregar(habitacion);
+		this.habitacionService.agregar(habitacion2);
+		
+		System.out.println("\nBuscar la habitacion ANTES DE LA ACTUALIZACION");
+		System.out.println(this.habitacionService.buscarPorNumero(1));
+		System.out.println(this.habitacionService.buscarPorNumero(2));
+		
+		System.out.println("\nActualizar la habitacion");
+		habitacion2.setNumero("1C actualizacion");
+		this.habitacionService.actualizar(habitacion2);
+		
+		System.out.println("\nBuscar el hotel DESPUES DE LA ACTUALIZACION");
+		System.out.println(this.habitacionService.buscarPorNumero(2));
+		
+		System.out.println("\nEliminar hotel");
+		this.habitacionService.borrarPorNumero(2);
 		
 
 	}
