@@ -100,32 +100,38 @@ public class PwU2P4TJoApplication implements CommandLineRunner {
 		 * vehiculos2) { System.out.println(com); }
 		 */
 
-		/*
-		 * System.out.println("Consultas con Querys dinamicas (Criteria API Query)");
-		 * Celular celular1 = new Celular(); celular1.setMarca("Samsung");
-		 * celular1.setModelo("AAA"); celular1.setPeso(100.0); celular1.setPrecio(new
-		 * BigDecimal(100)); celular1.setTamanio(200.0);
-		 * 
-		 * Celular celular2 = new Celular(); celular2.setMarca("Apple");
-		 * celular2.setModelo("BBB"); celular2.setPeso(150.0); celular2.setPrecio(new
-		 * BigDecimal(200)); celular2.setTamanio(100.0);
-		 * 
-		 * Celular celular3 = new Celular(); celular3.setMarca("Xiaomi");
-		 * celular3.setModelo("CCC"); celular3.setPeso(50.0); celular3.setPrecio(new
-		 * BigDecimal(100)); celular3.setTamanio(200.0);
-		 * 
-		 * this.celularService.actualizar(celular1);
-		 * this.celularService.actualizar(celular2);
-		 * this.celularService.actualizar(celular3);
-		 */
+		
+		 /* System.out.println("Consultas con Querys dinamicas (Criteria API Query)");
+		 Celular celular1 = new Celular(); celular1.setMarca("Samsung");
+		 celular1.setModelo("AAA"); celular1.setPeso(100.0); celular1.setPrecio(new
+		 BigDecimal(100)); celular1.setTamanio(200.0);
+		  
+		  Celular celular2 = new Celular(); celular2.setMarca("Apple");
+		  celular2.setModelo("BBB"); celular2.setPeso(150.0); celular2.setPrecio(new
+		  BigDecimal(200)); celular2.setTamanio(100.0);
+		  
+		  Celular celular3 = new Celular(); celular3.setMarca("Xiaomi");
+		  celular3.setModelo("CCC"); celular3.setPeso(50.0); celular3.setPrecio(new
+		  BigDecimal(100)); celular3.setTamanio(200.0);
+		  
+		  this.celularService.actualizar(celular1);
+		  this.celularService.actualizar(celular2);
+		  this.celularService.actualizar(celular3);*/
+		 
 
-		System.out.println("\nQuerys dinamicas");
+		/*System.out.println("\nQuerys dinamicas");
 			
 		System.out
-				.println(this.celularService.buscarCelularDinamico(new BigDecimal(100), "BBB", "Apple",150.0, 145.0, 155.0));
+				.println(this.celularService.buscarCelularDinamico(new BigDecimal(100), "BBB", "Apple", 150.0, 145.0, 155.0));
 
 		System.out
-		.println(this.celularService.buscarCelularDinamico(new BigDecimal(200), "BBB", "Apple",150.0, 145.0, 155.0));
+		.println(this.celularService.buscarCelularDinamico(new BigDecimal(200), "BBB", "Apple", 150.0, 145.0, 155.0));*/
 
+		System.out.println("\nTarea 9: Update and Delete con JPQL");
+		System.out.println("\nUpdate");
+		System.out.println(this.celularService.actualizarPorModelo("AAA", "Apple - U"));
+		
+		System.out.println("\nDelete");
+		System.out.println(this.celularService.borrarPorPrecio(100.00));
 	}
 }

@@ -16,4 +16,10 @@ public interface CelularReposiroty {
 
 	public Celular seleccionarCelularDinamico(BigDecimal precio, String modelo, String marca, Double peso,
 			Double pesoMin, Double pesoMax);
+	
+	public int actualizarPorModelo(String modelo, String marca);
+	
+	public int eliminarPorPrecio(Double precio);
+	
+
 }

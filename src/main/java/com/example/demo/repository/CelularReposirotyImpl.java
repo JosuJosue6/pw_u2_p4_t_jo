@@ -8,6 +8,7 @@ import com.example.demo.repository.modelo.Celular;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -69,6 +70,24 @@ public class CelularReposirotyImpl implements CelularReposiroty{
 		myCriteriaQuery.select(miTablaFrom).where(predicadoFinal);
 		TypedQuery<Celular> myQueryFinal = this.entityManager.createQuery(myCriteriaQuery); 
 		return myQueryFinal.getSingleResult();
+	}
+
+	@Override
+	public int actualizarPorModelo(String modelo, String marca) {
+		// TODO Auto-generated method stub
+		Query myQuery =this.entityManager.createQuery("UPDATE Celular e SET e.marca =:datoMarca WHERE e.modelo = :datoModelo");
+		myQuery.setParameter("datoModelo", modelo);
+		myQuery.setParameter("datoMarca", marca);
+		
+		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public int eliminarPorPrecio(Double precio) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createQuery("DELETE from Celular e WHERE e.precio = :datoPrecio");
+		myQuery.setParameter("datoPrecio", precio);
+		return myQuery.executeUpdate();
 	}
 
 

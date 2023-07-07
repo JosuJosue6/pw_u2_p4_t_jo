@@ -44,4 +44,16 @@ public class CelularServiceImpl implements CelularService {
 		return this.celularReposiroty.seleccionarCelularDinamico(precio, modelo, marca, peso, pesoMin, pesoMax);
 	}
 
+	@Override
+	public int actualizarPorModelo(String modelo, String marca) {
+		// TODO Auto-generated method stub
+		return this.celularReposiroty.actualizarPorModelo(modelo, marca);
+	}
+
+	@Override
+	public int borrarPorPrecio(Double precio) {
+		// TODO Auto-generated method stub
+		return this.celularReposiroty.eliminarPorPrecio(precio);
+	}
+
 }

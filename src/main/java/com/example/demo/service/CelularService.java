@@ -16,4 +16,8 @@ public interface CelularService {
 
 	public Celular buscarCelularDinamico(BigDecimal precio, String modelo, String marca, Double peso, Double pesoMin,
 			Double pesoMax);
+	
+	public int actualizarPorModelo(String modelo, String marca);
+	
+	public int borrarPorPrecio(Double precio);
 }
